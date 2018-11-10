@@ -1,6 +1,8 @@
 import typing
 from typing import List
 
+from Utils import *
+
 
 class Size:
     def __init__(self, russsian: str, international: str):
@@ -13,7 +15,7 @@ class Size:
 
 class Product:
 
-    def __init__(self, vendor_code: str, brand: str, color: str, style: str, print: str, price: str, made_in_country: str, site: str, sizes: List[Size], photos: List[str]):
+    def __init__(self, vendor_code: str, brand: str, color: str, style: str, print: str, price: str, made_in_country: str, site: str, sizes: List[str], photos: List[str]):
         self.vendor_code = vendor_code
         self.brand = brand
         self.color = color
@@ -40,11 +42,3 @@ class Product:
             sizes_line + ";" + \
             photos_line + ";"
         return result
-
-
-def list_to_str(items):
-    open_bracket = "["
-    close_bracket = "]"
-    str_list = [str(item) for item in items]
-    array_strs = ','.join(str_list)
-    return open_bracket + array_strs + close_bracket
