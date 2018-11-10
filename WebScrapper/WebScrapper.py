@@ -9,6 +9,8 @@ import re
 
 from Product import *
 
+from Utils import *
+
 
 def parse_types(html: str, class_attribute: str):
     results = []
@@ -31,10 +33,10 @@ def parse_clothes_list(html: str):
     for item in list:
         count = item.find("span", {"class": "cat-nav-cnt"}).get_text()
         link = item.find("a", {"class": "link"})
-        text = link.get_text().strip().replace('\n', '')
-        text = re.sub(r'\s+', ' ', text)
+        product_name = link.get_text()
+        product_name = normalize_str(product_name)
         href = link["href"]
-        results.append((text, href, count))
+        results.append((product_name, href, count))
     return results
 
 
@@ -81,6 +83,60 @@ def get_soup(url: str):
 
 def parse_product_page(url: str):
     soup = get_soup(url)
+
+    brand = soup.find("a", {"class": "ii-product__brand-text ii-link_primary"})
+    brand = normalize_str(brand.get_text())
+
+    price = soup.find("div", {"class": "ii-product__price-original"})
+    price = normalize_str(price.get_text())
+
+    "product__sizes-select-container"
+
+    def parse_price(soup):
+        price = soup.find("div", {"class": "ii-product__price-original"})
+        return normalize_str(price.get_text())
+
+    def parse_brand(soup):
+        brand = soup.find(
+            "a", {"class": "ii-product__brand-text ii-link_primary"})
+        return normalize_str(brand.get_text())
+
+    def parse_sizes(soup: BeautifulSoup):
+        sizes_container = soup.find(
+            "div", {"class": "product__sizes-select-container"})
+        select_items = sizes_container.find_all(
+            "div", {"class": "ii-select__option"})
+        sizes = [normalize_str(item["data-display"]) for item in select_items]
+        return sizes
+
+    def parse_photos(soup: BeautifulSoup):
+        items = soup.find_all("img", {"class": "showcase__slide-image"})
+        items: List[str] = [("http:"+item["src"]) for item in items]
+        items: List[str] = [item.replace(
+            "imf46x66", "product") for item in items]
+        return items
+
+    def parse_poduct_description(soup: BeautifulSoup):
+        container: BeautifulSoup = soup.find(
+            "div", {"class": "ii-product__description-text"})
+        container: BeautifulSoup = container.find(
+            "div", {"class": "ii-product__attributes"})
+        complex_items: BeautifulSoup = container.find_all(
+            "div", {"class", "ii-product__attribute"})
+
+        label_values: List[(str, str)] = []
+        for complex_item in complex_items:
+            label = complex_item.find(
+                "span", {"class": "ii-product__attribute-label"})
+            label = normalize_str(label.get_text()).replace(":", "")
+
+            value = complex_item.find(
+                "span", {"class": "ii-product__attribute-value"})
+            value = normalize_str(value.get_text()).replace(":", "")
+
+            label_values.append((label, value))
+
+        vendor_code = lab
 
 
 # https://www.lamoda.ru/c/399/clothes-bluzy-rubashki/?page=2
