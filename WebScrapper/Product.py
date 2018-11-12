@@ -15,11 +15,10 @@ class Size:
 
 class Product:
 
-    def __init__(self, vendor_code: str, brand: str, color: str, style: str, print: str, price: str, made_in_country: str, site: str, sizes: List[str], photos: List[str]):
+    def __init__(self, vendor_code: str, brand: str, color: str, print: str, price: str, made_in_country: str, site: str, sizes: List[str], photos: List[str]):
         self.vendor_code = vendor_code
         self.brand = brand
         self.color = color
-        self.style = style
         self.print = print
         self.price = price
         self.made_in_country = made_in_country
@@ -34,7 +33,6 @@ class Product:
         result = self.vendor_code + ";" + \
             self.brand + ";" + \
             self.color + ";" +\
-            self.style + ";" + \
             self.print+ ";" + \
             self.price + ";" +\
             self.made_in_country + ";" + \
