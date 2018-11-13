@@ -5,12 +5,12 @@ from Utils import *
 
 
 class Size:
-    def __init__(self, russsian: str, international: str):
-        self.russsian = russsian
+    def __init__(self, russian: str, international: str):
+        self.russian = russian
         self.international = international
 
     def __str__(self):
-        return "(rus:" + self.russsian + ", int:" + self.international + ")"
+        return "(rus:" + self.russian + ", int:" + self.international + ")"
 
 
 class Product:

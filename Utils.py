@@ -4,6 +4,7 @@ import requests
 import csv
 import urllib.request
 import typing
+import time
 from typing import List, Tuple
 import re
 
@@ -26,3 +27,8 @@ def normalize_str(string: str, capitalize = "normal", replace: Tuple[str, str] =
         string = string.replace(replace[0], replace[1])
     string = re.sub(r'\s+', ' ', string)
     return string
+
+def get_soup(url: str):
+    #url = urllib.request.urlopen(url)#requests.get(url).text
+    html = requests.get(url).text
+    return BeautifulSoup(html, "html5lib")
