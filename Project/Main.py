@@ -33,7 +33,8 @@ def main():
 
    test_category = categories[12]
 
-   parser = CategoryParser()
+   parser:CategoryParser = CategoryParser()
+   parser
    
    print(test_category)
 
