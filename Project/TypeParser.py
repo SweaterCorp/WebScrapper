@@ -2,8 +2,11 @@
 from bs4 import BeautifulSoup
 from typing import List
 
-from Project.Entities.Type import ClothesType, BaseType
-from Project.Infrastructure.Utils import normalize_str
+# from ..Entities.Type import ClothesType, BaseType
+# from ..Infrastructure.Utils import normalize_str
+
+from Type import *
+from Utils import *
 
 
 class TypeParser:

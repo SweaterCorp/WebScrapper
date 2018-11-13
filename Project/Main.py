@@ -7,9 +7,8 @@ import typing
 from typing import List, Tuple
 import re
 
-from Project.Parsers.__imports import *
-from Project.Entities.__imports import *
-from Project.Infrastructure.__imports import *
+from CategoryParser import *
+
 
 
 categories:List[Tuple[str,str]] = [
@@ -33,8 +32,8 @@ def main():
 
    test_category = categories[12]
 
-   parser:CategoryParser = CategoryParser()
-   parser
+ 
+
    
    print(test_category)
 

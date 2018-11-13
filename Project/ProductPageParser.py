@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 from typing import List, Tuple
 import json
-from Project.Entities.Product import Product
-from Project.Infrastructure.Logging import Logging
-from Project.Infrastructure.Utils import get_soup, normalize_str
+from Product import Product
+from Logging import Logging
+from Utils import get_soup, normalize_str
 
 
 class ProductPageParser:

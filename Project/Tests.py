@@ -1,7 +1,7 @@
-from Parsers.ProductPageParser import ProductPageParser
-from Entities.Product import Product
-from Infrastructure.Logging import Logging
-from Infrastructure.Utils import get_soup
+from ProductPageParser import ProductPageParser
+from Product import Product
+from Logging import Logging
+from Utils import get_soup
 
 class Tests:
     @staticmethod
