@@ -7,6 +7,42 @@ import typing
 from typing import List, Tuple
 import re
 
+from Project.Parsers.__imports import *
+from Project.Entities.__imports import *
+from Project.Infrastructure.__imports import *
+
+
+categories:List[Tuple[str,str]] = [
+("blouses_shirts","https://www.lamoda.ru/c/399/clothes-bluzy-rubashki/"),
+("trousers","https://www.lamoda.ru/c/401/clothes-bryuki-shorty-kombinezony/"),
+("outerwear","https://www.lamoda.ru/c/357/clothes-verkhnyaya-odezhda/"),
+("jumpers_sweaters_cardigans","https://www.lamoda.ru/c/371/clothes-trikotazh/"),
+("jeans","https://www.lamoda.ru/c/397/clothes-d-insy/"),
+("jackets_suits","https://www.lamoda.ru/c/367/clothes-pidzhaki-zhaketi/"),
+("dresses","https://www.lamoda.ru/c/369/clothes-platiya/"),
+("tracksuits","https://www.lamoda.ru/c/415/clothes-kostyumy/"),
+("hoodies_sweatshirts","https://www.lamoda.ru/c/2474/clothes-tolstovki-olimpiyki/"),
+("tops","https://www.lamoda.ru/c/2627/clothes-topy/"),
+("t_shirts_polo","https://www.lamoda.ru/c/2478/clothes-futbolki/"),
+("shorts","https://www.lamoda.ru/c/2485/clothes-shorty/"),
+("skirts","https://www.lamoda.ru/c/423/clothes-yubki/")
+]
+
+def main():
+   print(categories)
+
+   test_category = categories[12]
+
+   parser = CategoryParser()
+   
+   print(test_category)
+
+
+if __name__ == "__main__":
+    main()
+
+
+
 
 
 
@@ -65,31 +101,6 @@ import re
     # http://a.lmcdn.ru/img46x66/O/V/OV001EWBRUQ2_6867434_1_v2.jpg
     #
 
-categories:List[Tuple[str,str]] = [
-("blouses_shirts","https://www.lamoda.ru/c/399/clothes-bluzy-rubashki/"),
-("trousers","https://www.lamoda.ru/c/401/clothes-bryuki-shorty-kombinezony/"),
-("outerwear","https://www.lamoda.ru/c/357/clothes-verkhnyaya-odezhda/"),
-("jumpers_sweaters_cardigans","https://www.lamoda.ru/c/371/clothes-trikotazh/"),
-("jeans","https://www.lamoda.ru/c/397/clothes-d-insy/"),
-("jackets_suits","https://www.lamoda.ru/c/367/clothes-pidzhaki-zhaketi/"),
-("dresses","https://www.lamoda.ru/c/369/clothes-platiya/"),
-("tracksuits","https://www.lamoda.ru/c/415/clothes-kostyumy/"),
-("hoodies_sweatshirts","https://www.lamoda.ru/c/2474/clothes-tolstovki-olimpiyki/"),
-("tops","https://www.lamoda.ru/c/2627/clothes-topy/"),
-("t_shirts_polo","https://www.lamoda.ru/c/2478/clothes-futbolki/"),
-("shorts","https://www.lamoda.ru/c/2485/clothes-shorty/"),
-("skirts","https://www.lamoda.ru/c/423/clothes-yubki/")
-]
-
-def main():
-   print(categories)
-
-   test_category = categories[12]
-   print(test_category)
-
-
-if __name__ == "__main__":
-    main()
 
 #url = "https://www.lamoda.ru/p/ov001ewbruq2/clothes-ovs-dzhinsy/";
 # html = requests.get(url).text;#urllib.request.urlopen(url).read();

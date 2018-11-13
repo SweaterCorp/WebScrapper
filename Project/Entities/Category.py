@@ -1,5 +1,5 @@
 from typing import List
-from Product import Product
+from Project.Entities.Product import Product
 
 
 class Category:

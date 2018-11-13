@@ -1,6 +1,6 @@
 from typing import List
 
-from Infrastructure.Utils import list_to_str
+from Project.Infrastructure.Utils import list_to_str
 
 
 class Size:

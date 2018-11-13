@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 from typing import List
-from Entities.Product import Product
-from Entities.Category import Category
-from ProductPageParser import ProductPageParser
-from Infrastructure.Utils import get_soup
+from Project.Entities.Product import Product
+from Project.Entities.Category import Category
+from Project.Product.PageParser import ProductPageParser
+from Project.Infrastructure.Utils import get_soup
 
 
 class CategoryParser:
