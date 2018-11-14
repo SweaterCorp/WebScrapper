@@ -32,9 +32,13 @@ class ProductPageParser:
 
     def _get_price_first_way(self, soup: BeautifulSoup):
         product_price = soup.find("div", {"class": "ii-product__price"})
-        if (product_price is None) or (not product_price.has_attr("data-original")):
+        if (product_price is None):
             return ""
-        return product_price["data-original"]
+        if(product_price.has_attr("data-original")):
+            return product_price["data-original"]
+        if(product_price.has_attr("data-current")):
+            return product_price["data-current"]
+        return ""
 
     def _get_price_second_way(self, soup: BeautifulSoup):
         several_price = soup.find("div", {"class": "ii-product__price ii-product__price_several"})
