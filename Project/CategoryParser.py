@@ -15,7 +15,7 @@ class CategoryParser:
 
         for i in range(pages):
             url = base_url + str(i)
-            category.add_products(self.__parse_table(url))
+            category.add_products(self.__parse_table(get_soup(url)))
         return category
 
     def __parse_table(self, soup: BeautifulSoup):

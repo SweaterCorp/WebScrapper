@@ -35,7 +35,7 @@ class Product:
             self.print+ ";" + \
             self.price + ";" +\
             self.made_in_country + ";" + \
-            self.site + \
+            self.site + ";" + \
             sizes_line + ";" + \
             photos_line + ";"
         return result

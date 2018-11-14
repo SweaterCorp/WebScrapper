@@ -32,7 +32,7 @@ class ProductPageParser:
 
     def _get_price_first_way(self, soup: BeautifulSoup):
         product_price = soup.find("div", {"class": "ii-product__price"})
-        if (product_price is None) or (product_price.attr is None):
+        if (product_price is None) or (not product_price.has_attr("data-original")):
             return ""
         return product_price["data-original"]
 
@@ -96,3 +96,8 @@ class ProductPageParser:
 
             label_values.append((label, value))
         return label_values
+
+pr: Product = ProductPageParser().parse_product_page(get_soup("https://www.lamoda.ru/p/ad005ewcjde1/clothes-adladilisik-yubka"))
+
+#Logging.log(pr.to_scv_line())
+print(pr.to_scv_line())
