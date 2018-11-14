@@ -34,5 +34,9 @@ def normalize_str(string: str, capitalize="normal", replace: Tuple[str, str] = N
 def get_soup(url: str):
     # url = urllib.request.urlopen(url)#requests.get(url).text
     html = requests.get(url).text
-    Logging.log(html)
     return BeautifulSoup(html, "html5lib")
+
+def write_to_file(file_path:str, text: str):
+        with open(file_path, "w") as file:
+            file.write(text)
+
