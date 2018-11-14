@@ -8,6 +8,8 @@ import time
 from typing import List, Tuple
 import re
 
+from Logging import Logging
+
 
 def list_to_str(items):
     open_bracket = "["
@@ -32,4 +34,5 @@ def normalize_str(string: str, capitalize="normal", replace: Tuple[str, str] = N
 def get_soup(url: str):
     # url = urllib.request.urlopen(url)#requests.get(url).text
     html = requests.get(url).text
+    Logging.log(html)
     return BeautifulSoup(html, "html5lib")

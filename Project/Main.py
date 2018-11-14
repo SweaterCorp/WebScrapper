@@ -31,7 +31,9 @@ def main():
    print(categories)
 
    test_category = categories[12]
-
+   parser = CategoryParser()
+   category = parser.parse_category(test_category[1],60)
+   category.save_category_to_file(".Data/" + test_category[0]+".csv")
  
 
    
