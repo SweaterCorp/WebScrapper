@@ -30,10 +30,10 @@ categories:List[Tuple[str,str]] = [
 def main():
    print(categories)
 
-   test_category = categories[12]
+   test_category = categories[1]
    parser = CategoryParser()
    category = parser.parse_category(test_category[1],60)
-   category.save_category_to_file(".Data/" + test_category[0]+".csv")
+   category.save_category_to_file("./Data/" + test_category[0]+".csv")
  
 
    
@@ -79,14 +79,6 @@ if __name__ == "__main__":
 #         line = delimeter.join(map(str, (str(item)for item in row))) + delimeter
 #         results.append(line)
 #     return results
-
-
-# def parse_clothes_table(url: str):
-#     soup = get_soup(url)
-#     links = soup.find_all("a", {"class": "products-list-item__link link"})
-#     urls = []
-#     for link in links:
-#         urls.append(link["href"])
 
 
 
