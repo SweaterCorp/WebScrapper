@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from typing import List, Tuple
 import json
-from Product import Product
+from Product import Product, Size
 from Logging import Logging
 from Utils import get_soup, normalize_str
 
@@ -9,6 +9,7 @@ from Utils import get_soup, normalize_str
 class ProductPageParser:
 
     def parse_product_page(self, soup: BeautifulSoup):
+        is_available = self.__parse_product_is_available(soup)
         price = self.__parse_price(soup)
         brand = self.__parse_brand(soup)
         sizes = self.__parse_sizes(soup)
@@ -20,9 +21,16 @@ class ProductPageParser:
         vendor_code = self.__parse_vendor_code(description)
         made_in_country = self.__parse_made_in_country(description)
 
-        product = Product(vendor_code=vendor_code, brand=brand, color=color, print=print_,
-                          price=price, made_in_country=made_in_country, site="", sizes=sizes, photos=photos)
+        product = Product(vendor_code=vendor_code, is_available = is_available, brand=brand, color=color, print=print_,
+                          price=price, made_in_country=made_in_country, link="", sizes=sizes, photos=photos)
         return product
+
+    def __parse_product_is_available(self, soup: BeautifulSoup):
+        is_product_available = soup.find("div", {"data-in-stock": "true"})
+        if (is_product_available is None):
+            return False
+        else:
+            return True
 
     def __parse_price(self, soup: BeautifulSoup):
         price = self._get_price_first_way(soup)
@@ -54,8 +62,14 @@ class ProductPageParser:
     def __parse_sizes(self, soup: BeautifulSoup):
         sizes_container = soup.find("div", {"class": "product__sizes-select-container"})
         select_items = sizes_container.find_all("div", {"class": "ii-select__option"})
-        sizes = [normalize_str(item["data-display"]) for item in select_items]
+        sizes = [self.__parse_size(item) for item in select_items]
         return sizes
+
+    def __parse_size(self, item_size:BeautifulSoup):
+        data_display:str = item_size["data-display"]
+        is_available: bool = "ii-select__option_disabled" not in item_size["class"];
+        sizes = data_display.split(" ")
+        return Size(sizes[0], sizes[2].replace("(",""), sizes[3].replace(")",""), is_available)
 
     def __parse_photos(self, soup: BeautifulSoup):
         items = soup.find_all("img", {"class": "showcase__slide-image"})
@@ -101,7 +115,10 @@ class ProductPageParser:
             label_values.append((label, value))
         return label_values
 
-pr: Product = ProductPageParser().parse_product_page(get_soup("https://www.lamoda.ru/p/ad005ewcjde1/clothes-adladilisik-yubka"))
+# pr: Product = ProductPageParser().parse_product_page(get_soup("https://www.lamoda.ru/p/ad005ewcjde1/clothes-adladilisik-yubka"))
 
-#Logging.log(pr.to_scv_line())
-print(pr.to_scv_line())
+# #Logging.log(pr.to_scv_line())
+# print(pr.to_scv_line())
+
+
+
