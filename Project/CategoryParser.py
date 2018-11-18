@@ -22,9 +22,9 @@ class CategoryParser:
         result = []
         product_parser = ProductPageParser()
         links = soup.find_all("a", {"class": "products-list-item__link link"})
-        for link in links[0:10]:
+        for link in links:
             url = "https://www.lamoda.ru" + link["href"]
             product = product_parser.parse_product_page(get_soup(url))
-            product.site = url
+            product.link = url
             result.append(product)
         return result
