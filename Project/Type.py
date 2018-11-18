@@ -6,14 +6,14 @@ class BaseType:
         return self.name + ";"
 
 
-class ClothesType(BaseType):
-    clothes_table_url: str
-    clothes_count: int
+class CategoryType(BaseType):
+    products_table_url: str
+    products_count: int
 
-    def __init__(self, clothes_name: str, clothes_table_url: str, clothes_count: int):
-        super(ClothesType, self).__init__(clothes_name)
-        self.clothes_table_url = clothes_table_url
-        self.clothes_count = clothes_count
+    def __init__(self, category_name: str, products_table_url: str, products_count: int):
+        super(CategoryType, self).__init__(category_name)
+        self.products_table_url = products_table_url
+        self.products_count = products_count
 
     def to_csv_line(self):
-        return self.name + ";" + self.clothes_table_url + ";" + self.clothes_count + ";"
+        return self.name + ";" + self.products_table_url + ";" + self.products_count + ";"
