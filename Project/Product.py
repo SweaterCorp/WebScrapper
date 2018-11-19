@@ -16,7 +16,7 @@ class Size:
         self.is_available = is_available
 
     def __str__(self):
-        return "(|RUS:" + self.russian_size + f", {self.country_type}:" + self.other_country_size + f"| IsAvailable: {str(self.is_available)})"
+        return "(|RUS:" + self.russian_size + f" {self.country_type}:" + self.other_country_size + f"| IsAvailable: {str(self.is_available)})"
 
 
 class Product:
