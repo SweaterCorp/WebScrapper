@@ -30,7 +30,7 @@ categories:List[Tuple[str,str]] = [
 def main():
    print(categories)
 
-   test_category = categories[1]
+   test_category = categories[0]
    parser = CategoryParser()
    category = parser.parse_category(test_category[1],60)
    category.save_category_to_file("./Data/" + test_category[0]+".csv")
