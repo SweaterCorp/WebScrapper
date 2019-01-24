@@ -28,28 +28,15 @@ categories:List[Tuple[str,str]] = [
 ]
 
 def main():
-   print(categories)
-
-   test_category = categories[0]
+   test_category = categories[1]
    parser = CategoryParser()
-   category = parser.parse_category(test_category[1],60)
-   category.save_category_to_file("./Data/" + test_category[0]+".csv")
- 
+   parser.parse_category(test_category[1], test_category[0], 180, 320)
 
-   
    print(test_category)
 
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
 
 
 
